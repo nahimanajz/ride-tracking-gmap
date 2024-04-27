@@ -1,3 +1,7 @@
+import GoogleMap from "./components/GoogleMap";
+import Direction from "./components/Direction";
+import Direct2 from "./components/MapWithDirectionRenderer";
+import MapWithADirectionsRenderer from "./components/MapWithDirectionRenderer";
 
 /**
  * Embed direction api to calculate direction between two location
@@ -11,11 +15,13 @@ export default function Home() {
   * Show driver current location
   * Assume constant speed and calculate and display the ETA for the next stop
  */
- 
+
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-red-200" >
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta hic optio, ex iure dicta id corporis quibusdam deserunt laborum, reprehenderit illum aliquid praesentium laboriosam dolorum, iste nisi? Totam architecto nesciunt mollitia itaque?
-    </main>
+    <main>
+      {/* <GoogleMap /> */} {/** Places */}
+       {/* <Direction /> */}
+           <MapWithADirectionsRenderer />   
+       </main>
   );
 }
