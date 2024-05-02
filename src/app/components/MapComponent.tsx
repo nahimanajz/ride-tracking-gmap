@@ -1,5 +1,6 @@
 "use client";
 import { Eta } from "@/utils/types";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const MapComponent = () => {
@@ -24,6 +25,38 @@ const MapComponent = () => {
       zoom: 14,
     });
     directionsRenderer.setMap(map);
+    const waypoints =  [
+      {
+        location: new google.maps.LatLng(
+          -1.9355377074007851,
+          30.060163829002217
+        ),
+      }, // Stop A
+      {
+        location: new google.maps.LatLng(
+          -1.9358808342336546,
+          30.08024820994666
+        ),
+      }, // Stop B
+      {
+        location: new google.maps.LatLng(
+          -1.9489196023037583,
+          30.092607828989397
+        ),
+      }, // Stop C
+      {
+        location: new google.maps.LatLng(
+          -1.9592132952818164,
+          30.106684061788073
+        ),
+      }, // Stop D
+      {
+        location: new google.maps.LatLng(
+          -1.9487480402200394,
+          30.126596781356923
+        ),
+      }, // Stop E
+    ]
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -45,38 +78,7 @@ const MapComponent = () => {
             origin: pos,
             destination: { lat: -1.9365670876910166, lng: 30.13020167024439 }, // Kimironko
             travelMode: "DRIVING",
-            waypoints: [
-              {
-                location: new google.maps.LatLng(
-                  -1.9355377074007851,
-                  30.060163829002217
-                ),
-              }, // Stop A
-              {
-                location: new google.maps.LatLng(
-                  -1.9358808342336546,
-                  30.08024820994666
-                ),
-              }, // Stop B
-              {
-                location: new google.maps.LatLng(
-                  -1.9489196023037583,
-                  30.092607828989397
-                ),
-              }, // Stop C
-              {
-                location: new google.maps.LatLng(
-                  -1.9592132952818164,
-                  30.106684061788073
-                ),
-              }, // Stop D
-              {
-                location: new google.maps.LatLng(
-                  -1.9487480402200394,
-                  30.126596781356923
-                ),
-              }, // Stop E
-            ],
+            waypoints:waypoints,
             optimizeWaypoints: true,
           };
 
@@ -120,39 +122,6 @@ const MapComponent = () => {
         infowindow.open(map, marker);
       });
     }
-
-    const waypoints = [
-      {
-        location: new google.maps.LatLng(
-          -1.9355377074007851,
-          30.060163829002217
-        ),
-      }, // Stop A
-      {
-        location: new google.maps.LatLng(
-          -1.9358808342336546,
-          30.08024820994666
-        ),
-      }, // Stop B
-      {
-        location: new google.maps.LatLng(
-          -1.9489196023037583,
-          30.092607828989397
-        ),
-      }, // Stop C
-      {
-        location: new google.maps.LatLng(
-          -1.9592132952818164,
-          30.106684061788073
-        ),
-      }, // Stop D
-      {
-        location: new google.maps.LatLng(
-          -1.9487480402200394,
-          30.126596781356923
-        ),
-      }, // Stop E
-    ];
 
     waypoints.forEach(function (waypoint, index) {
       const marker = new google.maps.Marker({
@@ -200,7 +169,12 @@ const MapComponent = () => {
 
   return (
     <div className="flex gap-[20px] flex-col">
-      <div className="bg-tomato-400 px-[16px] py-[20px] flex flex-col">
+      <div className="h-[83px]  flex justify-between bg-gradient-to-r from-green-400 to-blue-500 px-[12px] py-[16px] fixed top-0 w-full">
+       <Image src={'/assets/menu.svg'}  alt="heart"  width={24} height={24}/>
+
+        <span className="text-base text-xl font-semibold">Startup</span>
+      </div>
+      <div className="bg-white px-[16px] py-[20px] flex flex-col mt-20">
         <div className="font-bold text-[20px] text-[#333]">
           Nyabugogo - Kimironko
         </div>
@@ -212,7 +186,13 @@ const MapComponent = () => {
           Next stop: {journeyInfo?.nextStop}
         </div>
       </div>
-      <div id="map" className="z-0 w-full h-screen" />
+      <div id="map" className="z-0 w-full h-auto min-h-[1100px]" />
+      <div className="bg-gradient-to-r from-green-400 to-blue-500 px-[16px] py-[20px] flex gap-[32px] w-full flex justify-between fixed bottom-0">
+        <Image src={'/assets/bell.svg'}  alt="heart"  width={24} height={24}/>
+        <Image src={'/assets/heart.svg'}  alt="heart"  width={24} height={24}/>
+        <Image src={'/assets/notification.svg'}  alt="heart"  width={24} height={24}/>
+
+      </div>
     </div>
   );
 };
