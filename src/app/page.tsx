@@ -1,7 +1,6 @@
-import GoogleMap from "./components/GoogleMap";
-import Direction from "./components/Direction";
-import Direct2 from "./components/MapWithDirectionRenderer";
-import MapWithADirectionsRenderer from "./components/MapWithDirectionRenderer";
+
+import MapComponent from "./components/MapComponent";
+import MapWithADirectionsRenderer from "./components/MapComponent";
 
 /**
  * Embed direction api to calculate direction between two location
@@ -21,7 +20,7 @@ export default function Home() {
     <main>
       {/* <GoogleMap /> */} {/** Places */}
        {/* <Direction /> */}
-           <MapWithADirectionsRenderer />   
+           <MapComponent />   
        </main>
   );
 }
